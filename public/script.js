@@ -34,6 +34,7 @@
             $capa.html(e.data.replace(/\r\n/g, '<br>'));
             $capa.append($('<br><button>Delete</button>')).appendTo($container);
           });
+          $status.hide();
         }else{
           $status.html('<strong><em>None found.</em></strong>');
         }
