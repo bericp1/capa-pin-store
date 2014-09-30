@@ -3,16 +3,25 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>CAPA Pin Store Viewer</title>
+    <link rel="stylesheet" href="bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap-theme.css" type="text/css">
     <style>
         body, html {width: 100%; height: 100%; margin: 0;}
+        .container {
+            margin-top: 50px;
+        }
+        .jumbotron {
+            text-align: center;
+        }
         form {
             display: block;
             margin: 20px auto;
             text-align: center;
+            width: 500px;
+            max-width: 100%;
         }
         .capa-pin-store-container {
             text-align: center;
-            border-top: 4px solid black;
         }
         .capa-pin-store-container .capa-record {
             width: 150px;
@@ -22,24 +31,41 @@
     </style>
 </head>
 <body>
-
-<form method="post" action="http://capa-new.colorado.edu/capa-bin/capahtml">
-    <h1>Login to do CAPA</h1>
-    <label>Class: </label>
-    <select name="CLASS">
-        <option>phys1110</option>
-        <option>phys1120</option>
-        <option>phys1240</option>
-        <option>phys2010</option>
-        <option>phys2020</option>
-        <option>phys2150</option>
-        <option>phys3070</option>
-    </select><br>
-    <label>Student Number: </label><input type="text" name="SNUM" size="9" maxlength="9"><br>
-    <label>CAPA ID: </label><input name="CAPAID" type="text" size="4" maxlength="4"><br>
-    <input type="HIDDEN" name="M" value="1">
-    <input type="submit" value="Go">
-</form>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Login to do CAPA</h1>
+        <form method="post" action="http://capa-new.colorado.edu/capa-bin/capahtml" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Class:</label>
+                <div class="col-sm-8">
+                    <select name="CLASS" class="form-control">
+                        <option>phys1110</option>
+                        <option>phys1120</option>
+                        <option>phys1240</option>
+                        <option>phys2010</option>
+                        <option>phys2020</option>
+                        <option>phys2150</option>
+                        <option>phys3070</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Student Number:</label>
+                <div class="col-sm-8">
+                    <input type="text" name="SNUM" size="9" maxlength="9" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">CAPA ID: </label>
+                <div class="col-sm-8">
+                    <input name="CAPAID" type="text" size="4" maxlength="4" class="form-control">
+                </div>
+            </div>
+            <input type="HIDDEN" name="M" value="1">
+            <input type="submit" value="Go" class="btn btn-primary">
+        </form>
+    </div>
+</div>
 
 <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="script.js"></script>

@@ -2,8 +2,9 @@
 
     var $container = $('<div></div>')
       .addClass('capa-pin-store-container')
+      .addClass('well')
       .html('<h1>Stored CAPAs</h1>')
-      .appendTo($('body'));
+      .appendTo($('.container'));
 
     var $status = $('<p><strong><em>Loading...</em></strong></p>').appendTo($container);
 
@@ -32,7 +33,7 @@
             $capa.addClass('capa-record');
             $capa.data('id', e._id);
             $capa.html(e.data.replace(/\r\n/g, '<br>'));
-            $capa.append($('<br><button>Delete</button>')).appendTo($container);
+            $capa.append($('<br><button class="btn btn-danger btn-sm">Delete</button>')).appendTo($container);
           });
           $status.hide();
         }else{
