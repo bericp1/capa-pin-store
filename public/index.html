@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>CAPA Pin Store Viewer</title>
+    <style>
+        body, html {width: 100%; height: 100%; margin: 0;}
+        form {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .capa-pin-store-container {
+            text-align: center;
+            border-top: 4px solid black;
+        }
+        .capa-pin-store-container .capa-record {
+            width: 150px;
+            display: inline-block;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<form method="post" action="http://capa-new.colorado.edu/capa-bin/capahtml">
+    <h1>Login to do CAPA</h1>
+    <label>Class: </label>
+    <select name="CLASS">
+        <option>phys1110</option>
+        <option>phys1120</option>
+        <option>phys1240</option>
+        <option>phys2010</option>
+        <option>phys2020</option>
+        <option>phys2150</option>
+        <option>phys3070</option>
+    </select><br>
+    <label>Student Number: </label><input type="text" name="SNUM" size="9" maxlength="9"><br>
+    <label>CAPA ID: </label><input name="CAPAID" type="text" size="4" maxlength="4"><br>
+    <input type="HIDDEN" name="M" value="1">
+    <input type="submit" value="Go">
+</form>
+
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
+</body>
+</html>

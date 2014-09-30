@@ -42,16 +42,11 @@ var prepare = function(){
     var ret = {}, status = 200;
     var done = function(){
       res.status(status);
-      if(req.param('cb')){
-        res.type('application/javascript');
-        res.send(req.param('cb') + '(' + JSON.stringify(ret) + ');');
-      }else{
-        res.send(ret);
-      }
+      res.send(ret);
     };
     if(!req.body.data){
       status = 500;
-      ret = {'status': 'bad', 'error': 'No data specified in request.'};
+      ret = {'status': 'bad', 'error': 'No data specified in POST request.'};
       done();
     }else{
       var capa = new CAPA({'data': req.body.data});
@@ -67,7 +62,30 @@ var prepare = function(){
     }
   });
 
-  app.use(express.static(__dirname + '/public'));
+  app.delete('/', function(req, res){
+    var ret = {}, status = 200;
+    var done = function(){
+      res.status(status);
+      res.send(ret);
+    };
+    if(!req.body.id){
+      status = 500;
+      ret = {'status': 'bad', 'error': 'No id specified in DELETE request.'};
+      done();
+    }else{
+      CAPA.findByIdAndRemove(req.body.id, function(error, capa){
+        if(error){
+          status = 500;
+          ret = {'status':'bad', 'name': 'DB Error', 'error': error};
+        }else{
+          ret = {'status': 'ok', capa: capa};
+        }
+        done();
+      });
+    }
+  });
+
+  app.use('/view', express.static(__dirname + '/public'));
 
   var server = app.listen(port, function() {
     console.log('Listening on port %d', server.address().port);
