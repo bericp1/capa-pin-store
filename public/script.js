@@ -13,7 +13,7 @@
       var id = $(ev.target).parent().data('id');
       $.ajax({
         type: 'DELETE',
-        url: '/',
+        url: '/api',
         data: {id: id}
       }).done(function(){
         location.reload();
@@ -22,7 +22,7 @@
 
     $.ajax({
       type:"GET",
-      url: "/?cb=?",
+      url: "/api?cb=?",
       dataType: "jsonp"
     })
       .done(function(data){

@@ -16,7 +16,7 @@ var prepare = function(){
   app.use(bodyParser());
   app.use(methodOverride());
 
-  app.get('/', function(req, res){
+  app.get('/api', function(req, res){
     var ret = {}, status = 200;
     var done = function(){
       res.status(status);
@@ -38,7 +38,7 @@ var prepare = function(){
     });
   });
 
-  app.post('/', function(req, res){
+  app.post('/api', function(req, res){
     var ret = {}, status = 200;
     var done = function(){
       res.status(status);
@@ -62,7 +62,7 @@ var prepare = function(){
     }
   });
 
-  app.delete('/', function(req, res){
+  app.delete('/api', function(req, res){
     var ret = {}, status = 200;
     var done = function(){
       res.status(status);
@@ -85,7 +85,7 @@ var prepare = function(){
     }
   });
 
-  app.use('/view', express.static(__dirname + '/public'));
+  app.use('/', express.static(__dirname + '/public'));
 
   var server = app.listen(port, function() {
     console.log('Listening on port %d', server.address().port);
